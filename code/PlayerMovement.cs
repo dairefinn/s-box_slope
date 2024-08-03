@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Sandbox;
 using Sandbox.Citizen;
 
@@ -31,8 +32,12 @@ public sealed class PlayerMovement : Component
 
 	protected override void OnUpdate()
 	{
-		IsCrouching = Input.Down("Crouch");
+		UpdateCrouch();
 		IsRunning = Input.Down("Run");
+		if (Input.Pressed("Jump")) Jump();
+
+		RotateBody();
+		UpdateAnimations();
 	}
 
 	protected override void OnFixedUpdate()
@@ -77,6 +82,50 @@ public sealed class PlayerMovement : Component
 			characterController.Velocity += gravity * Time.Delta * 0.5f;
 		} else {
 			characterController.Velocity = characterController.Velocity.WithZ(0);
+		}
+	}
+
+	void RotateBody() {
+		if (Body is null) return;
+
+		var targetAngle = new Angles(0, Head.Transform.Rotation.Yaw(), 0).ToRotation();
+		float rotateDiff = Body.Transform.Rotation.Distance(targetAngle);
+
+		if(rotateDiff > 50f || characterController.Velocity.Length > 10f) {
+			Body.Transform.Rotation = Rotation.Lerp(Body.Transform.Rotation, targetAngle, Time.Delta * 2f);
+		}
+	}
+
+	void Jump() {
+		if (!characterController.IsOnGround) return;
+
+		characterController.Punch(Vector3.Up * JumpForce);
+		animationHelper?.TriggerJump();
+	}
+
+	void UpdateAnimations() {
+		if (animationHelper is null) return;
+
+		animationHelper.WithWishVelocity(WishVelocity);
+		animationHelper.WithVelocity(characterController.Velocity);
+		animationHelper.AimAngle = Head.Transform.Rotation;
+		animationHelper.IsGrounded = characterController.IsOnGround;
+		animationHelper.WithLook(Head.Transform.Rotation.Forward, 1f, 0.75f, 0.5f);
+		animationHelper.MoveStyle = CitizenAnimationHelper.MoveStyles.Run;
+		animationHelper.DuckLevel = IsCrouching ? 1f : 0f;
+	}
+	
+	void UpdateCrouch() {
+		if (characterController is null) return;
+
+		if (Input.Pressed("Crouch") && !IsCrouching) {
+			IsCrouching = true;
+			characterController.Height /= 2f;
+		}
+
+		if (Input.Released("Crouch") && IsCrouching) {
+			IsCrouching = false;
+			characterController.Height *= 2f;
 		}
 	}
 }
