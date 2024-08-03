@@ -1,4 +1,3 @@
-using System;
 using Sandbox;
 
 public sealed class SpawnedProp : Component, Component.ICollisionListener
