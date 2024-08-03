@@ -1,16 +1,16 @@
 using System;
 using Sandbox;
 
-public sealed class SpawnerProp : Component
+public sealed class PropEmitter : Component
 {
 
 	[Property] public Model[] PropList { get; set; }
 
 
-	private  BoxCollider boxCollider;
+	private  BoxCollider spawnerBox;
 
 	protected override void OnStart() {
-		boxCollider = Components.Get<BoxCollider>();
+		spawnerBox = Components.Get<BoxCollider>();
 	}
 
 	protected override void OnUpdate()
@@ -20,8 +20,9 @@ public sealed class SpawnerProp : Component
 
 	public void SpawnProp() {
 		if (PropList is null) return;
+		Log.Info(PropList.Length);
 		if (PropList.Length == 0) return;
-		if (boxCollider is null) return;
+		if (spawnerBox is null) return;
 
 		Random random = new Random();
 		var randomIndex = random.Next(0, PropList.Length);
@@ -32,16 +33,21 @@ public sealed class SpawnerProp : Component
 		newProp.Transform.Position = Transform.Position;
 
 		// Pick a random point along the Y axis of SpawnerProp
-		var boxColliderSize = boxCollider.Scale;
+		var boxColliderSize = spawnerBox.Scale;
 		var boxColliderSizeHalf = boxColliderSize / 2;
-		var yStart =  - boxCollider.Center.y - boxColliderSizeHalf.y;
-		var yEnd =  + boxCollider.Center.y + boxColliderSizeHalf.y;
+		var yStart =  - spawnerBox.Center.y - boxColliderSizeHalf.y;
+		var yEnd =  + spawnerBox.Center.y + boxColliderSizeHalf.y;
 		var randomY = random.Next((int)yStart, (int)yEnd);
 		newProp.Transform.Position = newProp.Transform.Position.WithY(randomY);
 
 		ModelRenderer newPropModelRenderer = newProp.Components.Create<ModelRenderer>();
+		ModelCollider newPropModelCollider = newProp.Components.Create<ModelCollider>();
+		newPropModelCollider.Model = modelUsing;
+		SpawnedProp newPropSpawnerPropOutput = newProp.Components.Create<SpawnedProp>();
 		newPropModelRenderer.Model = modelUsing;
 		Rigidbody newPropRigidbody = newProp.Components.Create<Rigidbody>();
+
+		
 
 		newProp.Tags.Add("prop");
 

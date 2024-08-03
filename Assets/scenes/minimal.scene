@@ -12,12 +12,6 @@
           "__type": "GameLogic",
           "__guid": "c86f2159-c78b-4134-a681-eaef3d52e551",
           "PropSpawnInterval": 5,
-          "SpawnerProp": {
-            "_type": "component",
-            "component_id": "ccc637bc-1084-4803-8eef-50ba9f3e80e3",
-            "go": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
-            "component_type": "SpawnerProp"
-          },
           "StateIndicator": {
             "_type": "gameobject",
             "go": "160da1b2-2371-46d7-8fe4-0c0664f17667"
@@ -29,8 +23,7 @@
       "__guid": "29954516-348a-4d87-b969-6ea19f5b192c",
       "Flags": 0,
       "Name": "TriggerStartSpawning",
-      "Position": "506.0286,0,358.4234",
-      "Rotation": "0,-0.258819,0,0.9659258",
+      "Position": "506.0286,0,32",
       "Scale": "5,40,5",
       "Tags": "trigger",
       "Enabled": true,
@@ -67,7 +60,7 @@
       "__guid": "160da1b2-2371-46d7-8fe4-0c0664f17667",
       "Flags": 0,
       "Name": "StateIndicator",
-      "Position": "868.493,129.0076,605.6115",
+      "Position": "868.493,129.0076,37.3371",
       "Enabled": true,
       "Components": [
         {
@@ -1092,7 +1085,6 @@
       "Flags": 0,
       "Name": "World",
       "Position": "-51.89659,594.7644,230.689",
-      "Enabled": true,
       "Children": [
         {
           "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
@@ -1162,9 +1154,10 @@
               "__type": "Sandbox.ModelRenderer",
               "__guid": "e9c43ec5-b1b6-4ece-96a3-0800b6568a66",
               "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/wood/woodenplanks/woodenplanks.vmat",
               "Model": "models/dev/plane.vmdl",
               "RenderType": "On",
-              "Tint": "1,1,1,1"
+              "Tint": "0.2,0.2,0.2,1"
             },
             {
               "__type": "Sandbox.BoxCollider",
@@ -1172,7 +1165,8 @@
               "Center": "0,0,0",
               "IsTrigger": false,
               "Scale": "100,100,5",
-              "Static": true
+              "Static": false,
+              "Surface": "surfaces/wood.surface"
             }
           ]
         },
@@ -1188,10 +1182,10 @@
               "__type": "Sandbox.ModelRenderer",
               "__guid": "0b6a18bf-fdb8-4661-970e-ef635bfa9baa",
               "BodyGroups": 18446744073709551615,
-              "MaterialOverride": "materials/default.vmat",
+              "MaterialOverride": "materials/wood/woodenplanks/woodenplanks.vmat",
               "Model": "models/dev/plane.vmdl",
               "RenderType": "On",
-              "Tint": "0.39546,0.51163,0.27128,1"
+              "Tint": "0.2,0.2,0.2,1"
             },
             {
               "__type": "Sandbox.BoxCollider",
@@ -1199,7 +1193,8 @@
               "Center": "0,0,-5",
               "IsTrigger": false,
               "Scale": "100,100,10",
-              "Static": false
+              "Static": false,
+              "Surface": "surfaces/wood.surface"
             }
           ]
         }
@@ -1208,19 +1203,11 @@
     {
       "__guid": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
       "Flags": 0,
-      "Name": "SpawnerProps",
-      "Position": "1209.641,0,1104.841",
+      "Name": "PropEmitter",
+      "Position": "928,0,320",
       "Rotation": "0,-0.258819,0,0.9659258",
       "Enabled": true,
       "Components": [
-        {
-          "__type": "SpawnerProp",
-          "__guid": "ccc637bc-1084-4803-8eef-50ba9f3e80e3",
-          "PropList": [
-            "models/terry_skibid.vmdl",
-            "models/froggychair/froggychair.vmdl"
-          ]
-        },
         {
           "__type": "Sandbox.BoxCollider",
           "__guid": "b7388607-410c-4779-bb04-af764dd8f257",
@@ -1228,38 +1215,31 @@
           "IsTrigger": false,
           "Scale": "5,2000,5",
           "Static": false
+        },
+        {
+          "__type": "PropEmitter",
+          "__guid": "191dd4f3-667c-4a22-a873-82a3773a9a98",
+          "PropList": []
         }
       ]
     },
     {
-      "__guid": "4213c88c-ac37-4f4d-abc2-54bbac030847",
+      "__guid": "4afea26b-6a96-4ccd-9e29-54eb38019719",
       "Flags": 0,
-      "Name": "ColliderCleanup",
-      "Position": "3000,0,-1472",
-      "Scale": "200,100,1",
+      "Name": "Object",
       "Enabled": true,
       "Components": [
         {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "19d1b877-9698-45c2-a9f3-e85025eb4167",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "b47e5762-4ddc-4d85-8c5d-44e78b050667",
-          "Center": "0,0,0",
-          "IsTrigger": true,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "TriggerCleanup",
-          "__guid": "e0f84295-29b4-4c89-91d2-c41cd20e7c6f"
+          "__type": "Sandbox.MapInstance",
+          "__guid": "decf73b7-eae2-4e45-9a39-9ebdfea75816",
+          "__version": 1,
+          "EnableCollision": true,
+          "MapName": "facepunch.flatgrass",
+          "NoOrigin": false,
+          "UseMapFromLaunch": true
         }
-      ]
+      ],
+      "Children": []
     }
   ],
   "SceneProperties": {
@@ -1287,9 +1267,8 @@
   "Description": "",
   "ResourceVersion": 1,
   "__references": [
-    "dan.froggychair",
-    "sugmaclothing.templeoshat",
-    "turd.terry_skibidi"
+    "baik.woodenplanks",
+    "sugmaclothing.templeoshat"
   ],
   "__version": 1
 }

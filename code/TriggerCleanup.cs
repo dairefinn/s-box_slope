@@ -4,9 +4,10 @@ public sealed class TriggerCleanup : Component, Component.ITriggerListener
 {
 
 	public void OnTriggerEnter(Collider other) {
-		// FIXME: This don't work. Prop might need a box collider.
-		var isProp = other.Tags.Has("prop");
-		if (!isProp) return;
+		Log.Info("TriggerCleanup.OnTriggerEnter");
+		var prop = other.Components.Get<SpawnedProp>();
+		if (prop is null) return;
+		Log.Info("Destroying prop: " + prop);
 		other.Destroy();
 	}
 

@@ -5,7 +5,7 @@ using Sandbox;
 public sealed class GameLogic : Component
 {
 
-	[Property] public SpawnerProp SpawnerProp { get; set; }
+	[Property] public PropEmitter SpawnerProp { get; set; }
 	[Property] public GameObject StateIndicator { get; set; }
 	[Property] public float PropSpawnInterval { get; set; } = 2.0f;
 
@@ -27,14 +27,17 @@ public sealed class GameLogic : Component
 
 	protected override void OnUpdate()
 	{
-		if (spawningStarted) {
-			timeSinceLastSpawn += Time.Delta;
-			if (timeSinceLastSpawn >= PropSpawnInterval) {
-				SpawnerProp.SpawnProp();
-				timeSinceLastSpawn = 0.0f;
-				countPropsSpawned++;
-			}
-		}
+		TrySpawnProp();
+	}
+
+	private void TrySpawnProp() {
+		if (!spawningStarted) return;
+		timeSinceLastSpawn += Time.Delta;
+		if (timeSinceLastSpawn < PropSpawnInterval) return;
+		Log.Info("timeSinceLastSpawn >= PropSpawnInterval");
+		SpawnerProp.SpawnProp();
+		timeSinceLastSpawn = 0.0f;
+		countPropsSpawned++;
 	}
 
 	public void StartSpawning() {
