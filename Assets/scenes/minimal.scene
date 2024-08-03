@@ -5,7 +5,6 @@
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
       "Flags": 0,
       "Name": "Sun",
-      "Position": "208.251,64.46404,134.2085",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
       "Enabled": true,
@@ -86,8 +85,8 @@
       "__guid": "da04c160-18c9-4f78-bdb8-bddd715360e4",
       "Flags": 0,
       "Name": "Slope",
-      "Position": "-339.4113,0,339.4113",
-      "Rotation": "0,0.3826835,0,0.9238795",
+      "Position": "863.3376,0,241.9128",
+      "Rotation": "0,-0.258819,0,0.9659258",
       "Scale": "10,5,1",
       "Enabled": true,
       "Components": [
@@ -98,6 +97,14 @@
           "Model": "models/dev/plane.vmdl",
           "RenderType": "On",
           "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "894d4e5b-71a5-4925-87f2-8a0decbaf0ea",
+          "Center": "0,0,0",
+          "IsTrigger": false,
+          "Scale": "100,100,5",
+          "Static": false
         }
       ]
     },
@@ -118,9 +125,149 @@
     {
       "__guid": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
       "Flags": 0,
-      "Name": "Object",
+      "Name": "GameLogic",
       "Position": "288,0,0",
-      "Enabled": true
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "GameLogic",
+          "__guid": "c86f2159-c78b-4134-a681-eaef3d52e551"
+        }
+      ]
+    },
+    {
+      "__guid": "57b9086d-86f1-47c8-a5aa-7bf3c81073b2",
+      "Flags": 0,
+      "Name": "Player",
+      "Position": "64,0,0",
+      "Tags": "player",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.CharacterController",
+          "__guid": "991f2208-c184-4ba8-8d9f-c12da10a9eea",
+          "Acceleration": 10,
+          "Bounciness": 0.3,
+          "GroundAngle": 45,
+          "Height": 64,
+          "IgnoreLayers": "player",
+          "Radius": 16,
+          "StepHeight": 18,
+          "UseCollisionRules": false
+        },
+        {
+          "__type": "PlayerMovement",
+          "__guid": "5a956a39-9321-4073-81f3-51528dff3f3c",
+          "AirControl": 0.1,
+          "Body": {
+            "_type": "gameobject",
+            "go": "240e211a-5ded-41a2-95e5-ad8f1afe57cd"
+          },
+          "CrouchSpeed": 90,
+          "GroundControl": 4,
+          "Head": {
+            "_type": "gameobject",
+            "go": "3212c87e-af8b-4994-a96f-ed7553a49ffd"
+          },
+          "JumpForce": 400,
+          "MaxForce": 50,
+          "RunSpeed": 290,
+          "Speed": 160
+        },
+        {
+          "__type": "Sandbox.Citizen.CitizenAnimationHelper",
+          "__guid": "c1a5f9a8-fc32-4f07-b280-82c3e95dad81",
+          "BodyWeight": 1,
+          "EyeSource": {
+            "_type": "gameobject",
+            "go": "3212c87e-af8b-4994-a96f-ed7553a49ffd"
+          },
+          "EyesWeight": 1,
+          "HeadWeight": 1,
+          "LookAtEnabled": false,
+          "Target": {
+            "_type": "component",
+            "component_id": "d12f236e-ab37-4061-bda8-1db1886dc03b",
+            "go": "240e211a-5ded-41a2-95e5-ad8f1afe57cd",
+            "component_type": "SkinnedModelRenderer"
+          }
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "240e211a-5ded-41a2-95e5-ad8f1afe57cd",
+          "Flags": 0,
+          "Name": "Body",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SkinnedModelRenderer",
+              "__guid": "d12f236e-ab37-4061-bda8-1db1886dc03b",
+              "BodyGroups": 341,
+              "CreateBoneObjects": false,
+              "MaterialGroup": "default",
+              "Model": "models/citizen/citizen.vmdl",
+              "RenderType": "On",
+              "Tint": "1,1,1,1",
+              "UseAnimGraph": true
+            }
+          ]
+        },
+        {
+          "__guid": "3212c87e-af8b-4994-a96f-ed7553a49ffd",
+          "Flags": 0,
+          "Name": "Head",
+          "Position": "0,0,63.02669",
+          "Enabled": true
+        },
+        {
+          "__guid": "f90727cb-4c62-41b5-9161-b07fef7eba54",
+          "Flags": 0,
+          "Name": "Camera",
+          "Position": "0,0,64",
+          "Tags": "maincamera",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.CameraComponent",
+              "__guid": "4326275c-e403-432f-83af-a68bedc35e9e",
+              "BackgroundColor": "0.33333,0.46275,0.52157,1",
+              "ClearFlags": "All",
+              "FieldOfView": 60,
+              "IsMainCamera": true,
+              "Orthographic": false,
+              "OrthographicHeight": 1204,
+              "Priority": 1,
+              "RenderExcludeTags": "",
+              "RenderTags": "",
+              "TargetEye": "None",
+              "Viewport": "0,0,1,1",
+              "ZFar": 10000,
+              "ZNear": 10
+            },
+            {
+              "__type": "CameraMovement",
+              "__guid": "121edb1c-fcda-4ef0-a46a-37de2dbd25d5",
+              "Body": {
+                "_type": "gameobject",
+                "go": "240e211a-5ded-41a2-95e5-ad8f1afe57cd"
+              },
+              "Distance": 200,
+              "Head": {
+                "_type": "gameobject",
+                "go": "3212c87e-af8b-4994-a96f-ed7553a49ffd"
+              },
+              "Player": {
+                "_type": "component",
+                "component_id": "5a956a39-9321-4073-81f3-51528dff3f3c",
+                "go": "57b9086d-86f1-47c8-a5aa-7bf3c81073b2",
+                "component_type": "PlayerMovement"
+              }
+            }
+          ]
+        }
+      ]
     }
   ],
   "SceneProperties": {
