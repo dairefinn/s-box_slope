@@ -44,7 +44,7 @@ public sealed class GameLogic : Component
 		timeSinceLastSpawn += Time.Delta;
 		if (timeSinceLastSpawn < PropSpawnInterval) return;
 		Log.Info("timeSinceLastSpawn >= PropSpawnInterval");
-		SpawnerProp.SpawnProp();
+		SpawnerProp.TrySpawnProp();
 		timeSinceLastSpawn = 0.0f;
 		countPropsSpawned++;
 	}
@@ -56,7 +56,7 @@ public sealed class GameLogic : Component
 		StateIndicator.Components.Get<ModelRenderer>().Tint = "#00FF00";
 		timeSinceLastSpawn = 0.0f;
 		countPropsSpawned = 0;
-		SpawnerProp.SpawnProp();
+		SpawnerProp.TrySpawnProp();
 	}
 
 	public void StopSpawning() {

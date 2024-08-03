@@ -1212,8 +1212,7 @@
       "__guid": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
       "Flags": 0,
       "Name": "PropEmitter",
-      "Position": "23.10329,127.113,66.94773",
-      "Rotation": "0.1536222,0.125781,-0.7583309,0.6208975",
+      "Position": "1174.373,0,167.4589",
       "Enabled": true,
       "Components": [
         {
