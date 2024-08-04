@@ -2,8 +2,7 @@
   "RootObject": {
     "__guid": "57b9086d-86f1-47c8-a5aa-7bf3c81073b2",
     "Flags": 0,
-    "Name": "Player",
-    "Position": "64,0,0",
+    "Name": "player",
     "Tags": "player",
     "Enabled": true,
     "Components": [
@@ -74,7 +73,6 @@
         "__guid": "240e211a-5ded-41a2-95e5-ad8f1afe57cd",
         "Flags": 0,
         "Name": "Body",
-        "Position": "0,0,0",
         "Enabled": true,
         "Components": [
           {
@@ -201,24 +199,6 @@
                                     "Position": "6.908859,5.140497,-3.234591",
                                     "Rotation": "0.7071079,0.7071056,0.000003464245,-0.000004183565",
                                     "Enabled": true
-                                  },
-                                  {
-                                    "__guid": "a132ac6f-ad34-4cf5-8e26-5c8fa3629efb",
-                                    "Flags": 0,
-                                    "Name": "templeoshat",
-                                    "Position": "-56.54372,-0.9980882,0.00003044808",
-                                    "Rotation": "0.500002,0.4999969,0.5000015,0.4999992",
-                                    "Enabled": true,
-                                    "Components": [
-                                      {
-                                        "__type": "Sandbox.ModelRenderer",
-                                        "__guid": "4e61afa4-5f87-4973-afab-2acc27ca26ba",
-                                        "BodyGroups": 18446744073709551615,
-                                        "Model": "sugma_clothing/templeoshat.vmdl",
-                                        "RenderType": "On",
-                                        "Tint": "1,1,1,1"
-                                      }
-                                    ]
                                   }
                                 ]
                               }
@@ -947,15 +927,38 @@
         "Name": "Head",
         "Position": "0,0,63.02669",
         "Enabled": true
+      },
+      {
+        "__guid": "a9e4d08a-5638-438b-b662-0078a2abac79",
+        "Flags": 0,
+        "Name": "Nametag",
+        "Position": "0,0,80",
+        "Enabled": true,
+        "NetworkMode": 1,
+        "Components": [
+          {
+            "__type": "Sandbox.WorldPanel",
+            "__guid": "e3812298-aa7f-480e-b4a3-3acbf2397033",
+            "HorizontalAlign": "Center",
+            "InteractionRange": 1000,
+            "LookAtCamera": true,
+            "PanelSize": "1800,500",
+            "RenderScale": 1,
+            "VerticalAlign": "Center"
+          },
+          {
+            "__type": "Nametag",
+            "__guid": "1b131d1a-4342-4f97-b505-e96df8515761"
+          }
+        ]
       }
-    ]
+    ],
+    "__variables": []
   },
   "ShowInMenu": false,
   "MenuPath": null,
   "MenuIcon": null,
   "ResourceVersion": 1,
-  "__references": [
-    "sugmaclothing.templeoshat"
-  ],
+  "__references": [],
   "__version": 1
 }

@@ -66,7 +66,7 @@
           "Name": "PlaneSlope",
           "Position": "2352.557,0,1248",
           "Rotation": "0,-0.258819,0,0.9659258",
-          "Scale": "50,20,1",
+          "Scale": "50,15,1",
           "Enabled": true,
           "Components": [
             {
@@ -204,7 +204,13 @@
             },
             {
               "__type": "TriggerStart",
-              "__guid": "c522d5f1-36ee-49a0-8561-1be34246f5cf"
+              "__guid": "c522d5f1-36ee-49a0-8561-1be34246f5cf",
+              "GameLogic": {
+                "_type": "component",
+                "component_id": "c86f2159-c78b-4134-a681-eaef3d52e551",
+                "go": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
+                "component_type": "GameLogic"
+              }
             }
           ]
         },
@@ -235,7 +241,13 @@
             },
             {
               "__type": "TriggerWin",
-              "__guid": "1b09019f-dbde-46c9-867d-51f02132b534"
+              "__guid": "1b09019f-dbde-46c9-867d-51f02132b534",
+              "GameLogic": {
+                "_type": "component",
+                "component_id": "c86f2159-c78b-4134-a681-eaef3d52e551",
+                "go": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
+                "component_type": "GameLogic"
+              }
             }
           ]
         },
@@ -251,7 +263,7 @@
               "__guid": "b7388607-410c-4779-bb04-af764dd8f257",
               "Center": "0,0,0",
               "IsTrigger": true,
-              "Scale": "5,2000,5",
+              "Scale": "5,1500,5",
               "Static": false
             },
             {
@@ -363,7 +375,7 @@
   "SceneProperties": {
     "FixedUpdateFrequency": 50,
     "MaxFixedUpdates": 5,
-    "NetworkFrequency": 60,
+    "NetworkFrequency": 120,
     "NetworkInterpolation": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
