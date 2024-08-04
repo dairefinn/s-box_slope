@@ -1,115 +1,6 @@
 {
-  "__guid": "a8aefc11-7831-4923-a465-85b52e19796f",
+  "__guid": "97a5e63f-0b91-4e99-8bdd-00a9069233e7",
   "GameObjects": [
-    {
-      "__guid": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
-      "Flags": 0,
-      "Name": "GameLogic",
-      "Position": "-128,0,0",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "GameLogic",
-          "__guid": "c86f2159-c78b-4134-a681-eaef3d52e551",
-          "Player": {
-            "_type": "gameobject",
-            "go": "57b9086d-86f1-47c8-a5aa-7bf3c81073b2"
-          },
-          "PropSpawnInterval": 5,
-          "SpawnerProp": {
-            "_type": "component",
-            "component_id": "191dd4f3-667c-4a22-a873-82a3773a9a98",
-            "go": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
-            "component_type": "PropEmitter"
-          },
-          "StateIndicator": {
-            "_type": "gameobject",
-            "go": "160da1b2-2371-46d7-8fe4-0c0664f17667"
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "29954516-348a-4d87-b969-6ea19f5b192c",
-      "Flags": 0,
-      "Name": "TriggerStartSpawning",
-      "Position": "506.0286,0,160",
-      "Scale": "5,40,5",
-      "Tags": "trigger",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "8c85d921-94c4-440a-a33c-e719f8eeb777",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "Off",
-          "Tint": "1,1,1,0.06667"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "2ea4e57f-ad21-49b2-8aa7-3c9944f6043e",
-          "Center": "0,0,0",
-          "IsTrigger": true,
-          "Scale": "50,50,50",
-          "Static": false
-        },
-        {
-          "__type": "TriggerStart",
-          "__guid": "c522d5f1-36ee-49a0-8561-1be34246f5cf",
-          "GameLogic": {
-            "_type": "component",
-            "component_id": "c86f2159-c78b-4134-a681-eaef3d52e551",
-            "go": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
-            "component_type": "GameLogic"
-          }
-        }
-      ]
-    },
-    {
-      "__guid": "160da1b2-2371-46d7-8fe4-0c0664f17667",
-      "Flags": 0,
-      "Name": "StateIndicator",
-      "Position": "868.493,32,384",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "e4e069f4-5733-4537-971f-439ff6d4d382",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,0,0,1"
-        }
-      ]
-    },
-    {
-      "__guid": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
-      "Flags": 0,
-      "Name": "PropEmitter",
-      "Position": "4160.468,0.0001779851,2798.272",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "b7388607-410c-4779-bb04-af764dd8f257",
-          "Center": "0,0,0",
-          "IsTrigger": true,
-          "Scale": "5,2000,5",
-          "Static": false
-        },
-        {
-          "__type": "PropEmitter",
-          "__guid": "191dd4f3-667c-4a22-a873-82a3773a9a98",
-          "PropList": [
-            "models/car_123/car_m123.vmdl",
-            "models/old_red_lada/old_red_lada.vmdl",
-            "models/ruinsmodels/ruins_dumptruck.vmdl"
-          ],
-          "SpawningEnabled": true
-        }
-      ]
-    },
     {
       "__guid": "57b9086d-86f1-47c8-a5aa-7bf3c81073b2",
       "Flags": 0,
@@ -1157,7 +1048,7 @@
             {
               "__type": "Sandbox.DirectionalLight",
               "__guid": "d3659344-a90d-48fa-927a-095f70fe041f",
-              "FogMode": "Enabled",
+              "FogMode": "Disabled",
               "FogStrength": 1,
               "LightColor": "0.94419,0.97767,1,1",
               "Shadows": true,
@@ -1223,10 +1114,194 @@
           ]
         },
         {
+          "__guid": "8a09f81e-a15e-4669-a916-8c0390179f8c",
+          "Flags": 0,
+          "Name": "PlaneEnd",
+          "Position": "4617,0.0002698295,2498",
+          "Scale": "2,20,5",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "5354ba48-9c23-4ce4-9b50-4fb5146bfa66",
+              "BodyGroups": 18446744073709551615,
+              "MaterialOverride": "materials/wood/woodenplanks/woodenplanks.vmat",
+              "Model": "models/dev/plane.vmdl",
+              "RenderType": "On",
+              "Tint": "0.2,0.2,0.2,1"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "be087a89-49da-4881-970f-72d889e1eb28",
+              "Center": "0,0,-5",
+              "IsTrigger": false,
+              "Scale": "100,100,10",
+              "Static": false,
+              "Surface": "surfaces/wood.surface"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "6060d531-6fd5-449b-a777-ddf300db68d7",
+      "Flags": 0,
+      "Name": "Game",
+      "Enabled": true,
+      "Children": [
+        {
+          "__guid": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
+          "Flags": 0,
+          "Name": "GameLogic",
+          "Position": "-128,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "GameLogic",
+              "__guid": "c86f2159-c78b-4134-a681-eaef3d52e551",
+              "Player": {
+                "_type": "gameobject",
+                "go": "57b9086d-86f1-47c8-a5aa-7bf3c81073b2"
+              },
+              "SpawnerProp": {
+                "_type": "component",
+                "component_id": "191dd4f3-667c-4a22-a873-82a3773a9a98",
+                "go": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
+                "component_type": "PropEmitter"
+              },
+              "StateIndicator": {
+                "_type": "gameobject",
+                "go": "160da1b2-2371-46d7-8fe4-0c0664f17667"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "29954516-348a-4d87-b969-6ea19f5b192c",
+          "Flags": 0,
+          "Name": "TriggerStartSpawning",
+          "Position": "381.4861,0,257.2006",
+          "Rotation": "0,-0.258819,0,0.9659258",
+          "Scale": "5,40,5",
+          "Tags": "trigger",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "8c85d921-94c4-440a-a33c-e719f8eeb777",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,0.06667"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "2ea4e57f-ad21-49b2-8aa7-3c9944f6043e",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "TriggerStart",
+              "__guid": "c522d5f1-36ee-49a0-8561-1be34246f5cf",
+              "GameLogic": {
+                "_type": "component",
+                "component_id": "c86f2159-c78b-4134-a681-eaef3d52e551",
+                "go": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
+                "component_type": "GameLogic"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "5b62596a-0580-4e18-a832-c6b363615a7a",
+          "Flags": 0,
+          "Name": "TriggerWin",
+          "Position": "4672,0,2624",
+          "Scale": "5,40,5",
+          "Tags": "trigger",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "73ebc1cc-71ac-401a-9913-1396526f63b1",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "Off",
+              "Tint": "1,1,1,0.06667"
+            },
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "2e3e1d5c-2353-4363-9655-416ee3f4e47c",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "50,50,50",
+              "Static": false
+            },
+            {
+              "__type": "TriggerWin",
+              "__guid": "1b09019f-dbde-46c9-867d-51f02132b534",
+              "GameLogic": {
+                "_type": "component",
+                "component_id": "c86f2159-c78b-4134-a681-eaef3d52e551",
+                "go": "ceb5c5b9-82ed-45ac-9b4c-d9d23897757f",
+                "component_type": "GameLogic"
+              }
+            }
+          ]
+        },
+        {
+          "__guid": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
+          "Flags": 0,
+          "Name": "PropEmitter",
+          "Position": "4160.468,0.0001779851,2798.272",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.BoxCollider",
+              "__guid": "b7388607-410c-4779-bb04-af764dd8f257",
+              "Center": "0,0,0",
+              "IsTrigger": true,
+              "Scale": "5,2000,5",
+              "Static": false
+            },
+            {
+              "__type": "PropEmitter",
+              "__guid": "191dd4f3-667c-4a22-a873-82a3773a9a98",
+              "PropList": [
+                "models/car_123/car_m123.vmdl",
+                "models/old_red_lada/old_red_lada.vmdl",
+                "models/ruinsmodels/ruins_dumptruck.vmdl"
+              ],
+              "PropSpawnInterval": 1,
+              "SpawningEnabled": true,
+              "spawningStarted": false
+            }
+          ]
+        },
+        {
+          "__guid": "160da1b2-2371-46d7-8fe4-0c0664f17667",
+          "Flags": 0,
+          "Name": "StateIndicator",
+          "Position": "868.493,32,384",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.ModelRenderer",
+              "__guid": "e4e069f4-5733-4537-971f-439ff6d4d382",
+              "BodyGroups": 18446744073709551615,
+              "Model": "models/dev/box.vmdl",
+              "RenderType": "On",
+              "Tint": "1,0,0,1"
+            }
+          ]
+        },
+        {
           "__guid": "2d967305-035b-4bff-a62e-fc266b8df5c6",
           "Flags": 0,
           "Name": "SpawnPoint",
-          "Position": "31.72822,0,0",
+          "Position": "64,0,10",
           "Enabled": true,
           "Components": [
             {
@@ -1235,39 +1310,6 @@
               "Color": "0.8902,0.31765,0.05098,1"
             }
           ]
-        }
-      ]
-    },
-    {
-      "__guid": "4afea26b-6a96-4ccd-9e29-54eb38019719",
-      "Flags": 0,
-      "Name": "gm_construct",
-      "Components": [
-        {
-          "__type": "Sandbox.MapInstance",
-          "__guid": "decf73b7-eae2-4e45-9a39-9ebdfea75816",
-          "__version": 1,
-          "EnableCollision": true,
-          "MapName": "facepunch.flatgrass",
-          "NoOrigin": false,
-          "UseMapFromLaunch": true
-        }
-      ]
-    },
-    {
-      "__guid": "21d9aec5-7ee9-4af2-b4e6-a853be28a621",
-      "Flags": 0,
-      "Name": "Cube",
-      "Position": "1203.795,-975.9652,359.4745",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "3837db2f-140d-424b-a382-af154315c84e",
-          "BodyGroups": 18446744073709551615,
-          "Model": "models/dev/box.vmdl",
-          "RenderType": "On",
-          "Tint": "1,1,1,1"
         }
       ]
     }

@@ -6,22 +6,17 @@ public sealed class GameLogic : Component
 
 	[Property] public PropEmitter SpawnerProp { get; set; }
 	[Property] public GameObject StateIndicator { get; set; }
-	[Property] public float PropSpawnInterval { get; set; } = 1f;
 	[Property] public GameObject Player { get; set; }
-
-	public static float PropMinimumZ { get; set; } = -5f;
-	public static float PropLifetime { get; set; } = 10f;
-
-	private int countPropsSpawned = 0;
-
-	private float timeSinceLastSpawn = 0.0f;
-	public bool spawningStarted = false;
 
 	protected override void OnStart()
 	{
-		TrySpawnPlayer();
+		StartGame();
 	}
 
+	private void StartGame() {
+		TrySpawnPlayer();
+	}
+	
 	private void TrySpawnPlayer() {
 		if (Player is null) return;
 		if (Player.Enabled) return;
@@ -37,40 +32,20 @@ public sealed class GameLogic : Component
 		}
 	}
 
-	protected override void OnUpdate()
-	{
-		TrySpawnProp();
-	}
-
-	private void TrySpawnProp() {
-		if (!spawningStarted) return;
-		timeSinceLastSpawn += Time.Delta;
-		if (timeSinceLastSpawn < PropSpawnInterval) return;
-		SpawnerProp.TrySpawnProp();
-		timeSinceLastSpawn = 0.0f;
-		countPropsSpawned++;
-	}
-
 	public void StartSpawning() {
-		Log.Info("StartSpawning called");
-		if (spawningStarted) return;
-		spawningStarted = true;
+		SpawnerProp.StartSpawning();
 		StateIndicator.Components.Get<ModelRenderer>().Tint = "#00FF00";
-		timeSinceLastSpawn = 0.0f;
-		countPropsSpawned = 0;
-		SpawnerProp.TrySpawnProp();
 	}
 
 	public void StopSpawning() {
-		Log.Info("StopSpawning called");
-		if (!spawningStarted) return;
-		spawningStarted = false;
+		SpawnerProp.StopSpawning();
 		StateIndicator.Components.Get<ModelRenderer>().Tint = "#FF0000";
 	}
 
 	public void SetPlayerAsWinner(GameObject player) {
 		if (player is null) return;
 		StopSpawning();
-		// Player.Enabled = false;
+		Player.Enabled = false;
+		StartGame();
 	}
 }

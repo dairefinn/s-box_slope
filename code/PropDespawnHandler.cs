@@ -1,18 +1,17 @@
 using Sandbox;
 
-public sealed class PropDespawnController : Component, Component.ICollisionListener
+public sealed class PropDespawnHandler : Component
 {
 
     [Property] public bool DestroyOnMinimumZ = true;
     [Property] public bool DestroyOnLifetime = true;
-
-    private float lifeTime = 5f;
+    [Property] public float lifeTime = 5f;
+    [Property] public float minimumZ = -5f;
 
 	protected override void OnAwake()
 	{
 		base.OnAwake();
 
-        lifeTime = GameLogic.PropLifetime;
 	}
 
 	protected override void OnUpdate()
@@ -20,7 +19,7 @@ public sealed class PropDespawnController : Component, Component.ICollisionListe
 		base.OnUpdate();
 
         // If prop is out of bounds, destroy it
-        if (DestroyOnMinimumZ && Transform.Position.z < GameLogic.PropMinimumZ) {
+        if (DestroyOnMinimumZ && Transform.Position.z < minimumZ) {
             Log.Info("Prop is out of bounds, destroying it");
             GameObject.Destroy();
             return;
@@ -36,13 +35,5 @@ public sealed class PropDespawnController : Component, Component.ICollisionListe
             }
         }
 	}
-
-    public void OnCollisionStart(Collision collision) {
-        // If prop collides with the player, disable them
-        var isPlayer = collision.Other.GameObject.Tags.Has("player");
-		if (isPlayer) {
-            collision.Other.GameObject.Enabled = false;
-        }
-    }
 
 }
