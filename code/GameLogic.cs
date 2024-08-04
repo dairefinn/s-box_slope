@@ -9,6 +9,9 @@ public sealed class GameLogic : Component
 	[Property] public float PropSpawnInterval { get; set; } = 2.0f;
 	[Property] public GameObject Player { get; set; }
 
+	public static float PropMinimumZ { get; set; } = -5f;
+	public static float PropLifetime { get; set; } = 10f;
+
 	private int countPropsSpawned = 0;
 
 	private float timeSinceLastSpawn = 0.0f;
@@ -43,7 +46,6 @@ public sealed class GameLogic : Component
 		if (!spawningStarted) return;
 		timeSinceLastSpawn += Time.Delta;
 		if (timeSinceLastSpawn < PropSpawnInterval) return;
-		Log.Info("timeSinceLastSpawn >= PropSpawnInterval");
 		SpawnerProp.TrySpawnProp();
 		timeSinceLastSpawn = 0.0f;
 		countPropsSpawned++;

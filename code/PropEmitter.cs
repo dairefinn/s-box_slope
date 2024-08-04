@@ -21,7 +21,6 @@ public sealed class PropEmitter : Component
 
 	public void TrySpawnProp() {
 		if (PropList is null) return;
-		Log.Info(PropList.Length);
 		if (PropList.Length == 0) return;
 		if (spawnerBox is null) return;
 
@@ -29,9 +28,7 @@ public sealed class PropEmitter : Component
 		var modelUsing = GetRandomModelFromSelection();
 		var newProp = CreateProp(modelUsing);
 
-		// Scene.Children.Add(newProp);
 		Log.Info("Spawned prop: " + modelUsing.Name);
-		Log.Info(newProp);
 	}
 
 	private Model GetRandomModelFromSelection() {
