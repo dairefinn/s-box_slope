@@ -1,5 +1,3 @@
-using Sandbox;
-
 public sealed class PlayerCollisionHandler : Component, Component.ICollisionListener
 {
 	

@@ -1,25 +1,27 @@
-using Sandbox;
-
 public sealed class CameraMovement : Component
 {
-	[Property] public PlayerMovement Player { get; set; }
-	[Property] public GameObject Body { get; set; }
-	[Property] public GameObject Head { get; set; }
 	[Property] public float Distance { get; set; } = 0f;
-
+	
 	public bool IsFirstPerson => Distance == 0f;
 	private Vector3 CurrentOffset = Vector3.Zero;
 	private CameraComponent Camera;
-	private ModelRenderer BodyRenderer;
+
+	private PlayerMovement Player { get; set; }
+	private GameObject Body { get; set; }
+	private GameObject Head { get; set; }
 
 	protected override void OnAwake()
 	{
 		Camera = Components.Get<CameraComponent>();
-		BodyRenderer = Body.Components.Get<ModelRenderer>();
 	}
 
 	protected override void OnUpdate()
 	{
+		if (Player is null) {
+			GetPlayerReferences();
+			return;
+		}
+
 		var eyeAngles = Head.Transform.Rotation.Angles();
 		eyeAngles.pitch += Input.MouseDelta.y * 0.1f;
 		eyeAngles.yaw -= Input.MouseDelta.x * 0.1f;
@@ -45,15 +47,24 @@ public sealed class CameraMovement : Component
 				} else {
 					camPos = camTrace.EndPosition;
 				}
-
-				// Show the body if not in first person
-				BodyRenderer.RenderType = ModelRenderer.ShadowRenderType.On;
-			} else {
-				BodyRenderer.RenderType = ModelRenderer.ShadowRenderType.ShadowsOnly;
 			}
 
 			Camera.Transform.Position = camPos;
 			Camera.Transform.Rotation = eyeAngles.ToRotation();
 		}
+	}
+
+	private void GetPlayerReferences() {
+		Player = PlayerMovement.Local;
+		Head = null;
+		Body = null;
+
+		if (Player is null) {
+			Log.Error("Failed to find Player instance to attach camera to");
+			return;
+		}
+
+		Body = Player.Body;
+		Head = Player.Head;
 	}
 }

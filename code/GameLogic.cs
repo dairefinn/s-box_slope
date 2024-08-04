@@ -6,30 +6,11 @@ public sealed class GameLogic : Component
 
 	[Property] public PropEmitter SpawnerProp { get; set; }
 	[Property] public GameObject StateIndicator { get; set; }
-	[Property] public GameObject Player { get; set; }
+	[Property] public NetworkHelper NetworkHelper { get; set; }
 
 	protected override void OnStart()
 	{
-		StartGame();
-	}
-
-	private void StartGame() {
-		TrySpawnPlayer();
-	}
-	
-	private void TrySpawnPlayer() {
-		if (Player is null) return;
-		if (Player.Enabled) return;
-
-		// Finds the first active spawn point and spawns the player there
-		foreach (var spawnPoint in Scene.GetAllComponents<SpawnPoint>() ) {
-			if (spawnPoint.Active) {
-				Player.Enabled = true;
-				Player.Transform.Position = spawnPoint.Transform.Position;
-				Player.Transform.Rotation = spawnPoint.Transform.Rotation;
-				return;
-			}
-		}
+		
 	}
 
 	public void StartSpawning() {
@@ -45,7 +26,8 @@ public sealed class GameLogic : Component
 	public void SetPlayerAsWinner(GameObject player) {
 		if (player is null) return;
 		StopSpawning();
-		Player.Enabled = false;
-		StartGame();
+		// TODO: Respawn players using NetworkHelper
+		// Player.Enabled /= false;
+		// StartGame();
 	}
 }
