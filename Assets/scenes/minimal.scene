@@ -33,7 +33,7 @@
       "__guid": "29954516-348a-4d87-b969-6ea19f5b192c",
       "Flags": 0,
       "Name": "TriggerStartSpawning",
-      "Position": "506.0286,0,32",
+      "Position": "506.0286,0,160",
       "Scale": "5,40,5",
       "Tags": "trigger",
       "Enabled": true,
@@ -44,7 +44,7 @@
           "BodyGroups": 18446744073709551615,
           "Model": "models/dev/box.vmdl",
           "RenderType": "Off",
-          "Tint": "1,1,1,0.2"
+          "Tint": "1,1,1,0.06667"
         },
         {
           "__type": "Sandbox.BoxCollider",
@@ -70,7 +70,7 @@
       "__guid": "160da1b2-2371-46d7-8fe4-0c0664f17667",
       "Flags": 0,
       "Name": "StateIndicator",
-      "Position": "868.493,129.0076,37.3371",
+      "Position": "868.493,32,384",
       "Enabled": true,
       "Components": [
         {
@@ -80,6 +80,32 @@
           "Model": "models/dev/box.vmdl",
           "RenderType": "On",
           "Tint": "1,0,0,1"
+        }
+      ]
+    },
+    {
+      "__guid": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
+      "Flags": 0,
+      "Name": "PropEmitter",
+      "Position": "4160.468,0.0001779851,2798.272",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "b7388607-410c-4779-bb04-af764dd8f257",
+          "Center": "0,0,0",
+          "IsTrigger": true,
+          "Scale": "5,2000,5",
+          "Static": false
+        },
+        {
+          "__type": "PropEmitter",
+          "__guid": "191dd4f3-667c-4a22-a873-82a3773a9a98",
+          "PropList": [
+            "models/car_123/car_m123.vmdl",
+            "models/old_red_lada/old_red_lada.vmdl",
+            "models/ruinsmodels/ruins_dumptruck.vmdl"
+          ]
         }
       ]
     },
@@ -1079,13 +1105,12 @@
       "__guid": "5c2d9c3c-989f-43db-b90d-e1490e3a581b",
       "Flags": 0,
       "Name": "World",
-      "Position": "-51.89659,594.7644,230.689",
+      "Enabled": true,
       "Children": [
         {
           "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
           "Flags": 0,
           "Name": "2D Skybox",
-          "Position": "0,0,0",
           "Tags": "skybox",
           "Enabled": true,
           "Components": [
@@ -1120,7 +1145,6 @@
           "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
           "Flags": 0,
           "Name": "Sun",
-          "Position": "0,0,0",
           "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
           "Tags": "light_directional,light",
           "Enabled": true,
@@ -1140,7 +1164,7 @@
           "__guid": "da04c160-18c9-4f78-bdb8-bddd715360e4",
           "Flags": 0,
           "Name": "PlaneSlope",
-          "Position": "2352.557,-594.7644,1002.885",
+          "Position": "2352.557,0,1248",
           "Rotation": "0,-0.258819,0,0.9659258",
           "Scale": "50,20,1",
           "Enabled": true,
@@ -1169,7 +1193,7 @@
           "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
           "Flags": 0,
           "Name": "PlaneStart",
-          "Position": "147.8966,-596.2526,-230.689",
+          "Position": "96,0,0",
           "Scale": "2,5,5",
           "Enabled": true,
           "Components": [
@@ -1192,35 +1216,19 @@
               "Surface": "surfaces/wood.surface"
             }
           ]
-        }
-      ]
-    },
-    {
-      "__guid": "eab85794-81b8-4f1d-8cb2-4077cb2d6b6a",
-      "Flags": 0,
-      "Name": "PropEmitter",
-      "Position": "1174.373,0,167.4589",
-      "Enabled": true,
-      "Components": [
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "b7388607-410c-4779-bb04-af764dd8f257",
-          "Center": "0,0,0",
-          "IsTrigger": true,
-          "Scale": "5,2000,5",
-          "Static": false
         },
         {
-          "__type": "PropEmitter",
-          "__guid": "191dd4f3-667c-4a22-a873-82a3773a9a98",
-          "PropList": [
-            "models/citizen_props/oldoven.vmdl",
-            "models/car_123/car_m123.vmdl",
-            "models/citizen_props/trashcan02.vmdl",
-            "models/terry_skibid.vmdl",
-            "models/electronics/washing_machine/washingmachine.vmdl",
-            "models/old_red_lada/old_red_lada.vmdl",
-            "models/ruinsmodels/ruins_dumptruck.vmdl"
+          "__guid": "2d967305-035b-4bff-a62e-fc266b8df5c6",
+          "Flags": 0,
+          "Name": "SpawnPoint",
+          "Position": "31.72822,0,0",
+          "Enabled": true,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "46c03e8d-77a9-4963-a80b-2eb9b675186e",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
           ]
         }
       ]
@@ -1229,7 +1237,6 @@
       "__guid": "4afea26b-6a96-4ccd-9e29-54eb38019719",
       "Flags": 0,
       "Name": "gm_construct",
-      "Enabled": true,
       "Components": [
         {
           "__type": "Sandbox.MapInstance",
@@ -1240,8 +1247,24 @@
           "NoOrigin": false,
           "UseMapFromLaunch": true
         }
-      ],
-      "Children": []
+      ]
+    },
+    {
+      "__guid": "21d9aec5-7ee9-4af2-b4e6-a853be28a621",
+      "Flags": 0,
+      "Name": "Cube",
+      "Position": "1203.795,-975.9652,359.4745",
+      "Enabled": true,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "3837db2f-140d-424b-a382-af154315c84e",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "1,1,1,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -1271,11 +1294,9 @@
   "__references": [
     "baik.woodenplanks",
     "fish.old_red_lada",
-    "frogpond.washingmachine",
     "luke.ruins_dumptruck",
     "mrlokan.vehicle",
-    "sugmaclothing.templeoshat",
-    "turd.terry_skibidi"
+    "sugmaclothing.templeoshat"
   ],
   "__version": 1
 }

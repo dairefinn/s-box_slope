@@ -6,7 +6,7 @@ public sealed class GameLogic : Component
 
 	[Property] public PropEmitter SpawnerProp { get; set; }
 	[Property] public GameObject StateIndicator { get; set; }
-	[Property] public float PropSpawnInterval { get; set; } = 2.0f;
+	[Property] public float PropSpawnInterval { get; set; } = 1f;
 	[Property] public GameObject Player { get; set; }
 
 	public static float PropMinimumZ { get; set; } = -5f;
