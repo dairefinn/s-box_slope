@@ -37,15 +37,12 @@ public sealed class PropDespawnController : Component, Component.ICollisionListe
         }
 	}
 
-    public void OnCollision(Collision collision) {
-        Log.Info("SpawnedProp.OnCollision");
-        Log.Info(collision);
-    }
-
-
-    public void OnCollision(Collider other) {
-        Log.Info("SpawnedProp.OnCollision");
-        Log.Info(other);
+    public void OnCollisionStart(Collision collision) {
+        // If prop collides with the player, disable them
+        var isPlayer = collision.Other.GameObject.Tags.Has("player");
+		if (isPlayer) {
+            collision.Other.GameObject.Enabled = false;
+        }
     }
 
 }
