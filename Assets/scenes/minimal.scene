@@ -105,7 +105,8 @@
             "models/car_123/car_m123.vmdl",
             "models/old_red_lada/old_red_lada.vmdl",
             "models/ruinsmodels/ruins_dumptruck.vmdl"
-          ]
+          ],
+          "SpawningEnabled": true
         }
       ]
     },
@@ -172,6 +173,10 @@
           "IsTrigger": false,
           "Scale": "30,30,65.6",
           "Static": false
+        },
+        {
+          "__type": "PlayerCollisionHandler",
+          "__guid": "ce825080-805b-442f-9c25-c16d63c21c05"
         }
       ],
       "Children": [

@@ -68,4 +68,9 @@ public sealed class GameLogic : Component
 		StateIndicator.Components.Get<ModelRenderer>().Tint = "#FF0000";
 	}
 
+	public void SetPlayerAsWinner(GameObject player) {
+		if (player is null) return;
+		StopSpawning();
+		// Player.Enabled = false;
+	}
 }
